@@ -10,7 +10,7 @@ loadScripts();
         $rows = $pm->listProducts();
 
         $html = "";
-        //var_dump($rows);
+        //var_dump($rows)fdsafdsa;
         foreach($rows as $row) {
             $sku = $row['SKU'];
             $price = $row['item_price'];
