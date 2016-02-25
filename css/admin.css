@@ -1,0 +1,70 @@
+
+.bg-primary {
+    padding-top: 8%;
+    padding-bottom: 8%;
+    background-color: white;
+}
+
+.bg-primary-new {
+    padding-top: 8%;
+    padding-bottom: 1%;
+    background-color: white;
+}
+
+.bg-primary-contact {
+    padding-top: 4%;
+    padding-bottom: 4%;
+    background-color: white;
+}
+
+.bg-dark {
+    color: #fff;
+    background-color: #222;
+}
+
+.text-faded {
+    color: rgba(3, 2, 2, 0.44);
+}
+
+.section-heading-main {
+    margin-bottom: 30px;
+    color:  #ad9674;
+}
+
+.intro-header2 {
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 1px;
+    text-align: center;
+    color: #f8f8f8;
+    background: url(../img/shop.jpg) no-repeat center center;
+    background-size: cover;
+    height: 60%;
+}
+
+.intro-header3 {
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 1px;
+    text-align: center;
+    color: #f8f8f8;
+    background: url(../img/ourstory.jpg) no-repeat center center;
+    background-size: cover;
+    height: 60%;
+}
+
+.intro-header4 {
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 1px;
+    text-align: center;
+    color: #f8f8f8;
+    background: url(../img/Contact.jpg) no-repeat center center;
+    background-size: cover;
+    height: 60%;
+}
+
+a {
+  color: #c1c1c1;
+}
+
+.current-section{
+    color: #ad9674;
+}

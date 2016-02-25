@@ -1,0 +1,109 @@
+-- phpMyAdmin SQL Dump
+-- version 4.4.10
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Jan 15, 2016 at 07:58 PM
+-- Server version: 5.5.42
+-- PHP Version: 5.6.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `antique`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_info`
+--
+
+CREATE TABLE `admin_info` (
+  `Name` varchar(50) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `Password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `Name` varchar(50) NOT NULL,
+  `Price` int(15) NOT NULL,
+  `SKU` int(50) NOT NULL,
+  `Type` varchar(25) NOT NULL,
+  `p_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction`
+--
+
+CREATE TABLE `transaction` (
+  `p_id` int(11) NOT NULL,
+  `t_id` int(11) NOT NULL,
+  `DT Start` int(11) NOT NULL,
+  `DT End` int(11) NOT NULL,
+  `State` varchar(25) NOT NULL,
+  `SubTotal` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction_bridge`
+--
+
+CREATE TABLE `transaction_bridge` (
+  `p_id` int(11) NOT NULL,
+  `t_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`p_id`);
+
+--
+-- Indexes for table `transaction`
+--
+ALTER TABLE `transaction`
+  ADD PRIMARY KEY (`t_id`),
+  ADD KEY `p_id` (`p_id`),
+  ADD KEY `p_id_2` (`p_id`);
+
+--
+-- Indexes for table `transaction_bridge`
+--
+ALTER TABLE `transaction_bridge`
+  ADD KEY `p_id` (`p_id`),
+  ADD KEY `t_id` (`t_id`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `transaction`
+--
+ALTER TABLE `transaction`
+  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`p_id`) REFERENCES `products` (`p_id`);
+
+--
+-- Constraints for table `transaction_bridge`
+--
+ALTER TABLE `transaction_bridge`
+  ADD CONSTRAINT `transaction_bridge_ibfk_2` FOREIGN KEY (`t_id`) REFERENCES `transaction` (`t_id`),
+  ADD CONSTRAINT `transaction_bridge_ibfk_1` FOREIGN KEY (`p_id`) REFERENCES `products` (`p_id`);

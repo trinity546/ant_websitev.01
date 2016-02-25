@@ -1,0 +1,236 @@
+-- phpMyAdmin SQL Dump
+-- version 4.4.10
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Feb 19, 2016 at 06:54 PM
+-- Server version: 5.5.42
+-- PHP Version: 5.6.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `ant_web`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_info`
+--
+
+CREATE TABLE `admin_info` (
+  `ID` int(11) NOT NULL,
+  `f_name` varchar(50) NOT NULL,
+  `l_name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `ID` int(11) NOT NULL,
+  `state` varchar(30) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `total` decimal(15,2) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`ID`, `state`, `time`, `total`) VALUES
+(1, 'cancelled', '2016-02-05 00:51:40', '0.00'),
+(2, 'cancelled', '2016-02-05 00:51:40', '0.00'),
+(3, 'cancelled', '2016-02-07 19:34:13', '0.00'),
+(4, 'cancelled', '2016-02-07 19:34:29', '0.00'),
+(5, 'started', '2016-02-07 19:44:57', '0.00'),
+(6, 'checked out', '2016-02-11 22:46:02', '0.00'),
+(7, 'checked out', '2016-02-11 23:16:44', '0.00'),
+(8, 'started', '2016-02-11 23:26:24', '0.00'),
+(9, 'checked out', '2016-02-18 23:14:03', '0.00'),
+(10, 'cancelled', '2016-02-18 23:15:10', '0.00'),
+(11, 'cancelled', '2016-02-18 23:19:12', '0.00'),
+(12, 'cancelled', '2016-02-18 23:22:22', '0.00'),
+(13, 'started', '2016-02-18 23:29:56', '0.00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart_product`
+--
+
+CREATE TABLE `cart_product` (
+  `ID` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `cart_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cart_product`
+--
+
+INSERT INTO `cart_product` (`ID`, `product_id`, `cart_id`, `quantity`, `time`) VALUES
+(1, 1, 1, 0, '2016-02-05 00:51:40'),
+(2, 2, 1, 0, '2016-02-05 00:51:40'),
+(3, 1, 2, 0, '2016-02-05 00:51:40'),
+(4, 2, 2, 0, '2016-02-05 00:51:40'),
+(5, 1, 6, 1, '2016-02-11 22:59:40'),
+(6, 1, 6, 1, '2016-02-11 22:59:40'),
+(7, 1, 6, 1, '2016-02-11 22:59:40'),
+(8, 1, 6, 1, '2016-02-11 22:59:40'),
+(9, 1, 6, 1, '2016-02-11 22:59:40'),
+(10, 1, 6, 1, '2016-02-11 22:59:40'),
+(11, 1, 6, 1, '2016-02-11 22:59:40'),
+(12, 1, 6, 1, '2016-02-11 22:59:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `ID` int(11) NOT NULL,
+  `SKU` varchar(100) NOT NULL,
+  `item_price` decimal(15,2) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  `path` varchar(200) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`ID`, `SKU`, `item_price`, `description`, `path`) VALUES
+(1, 'sk-2843y', '14.99', 'toaster', ''),
+(2, 'sk-327623z', '3.99', 'napkins', ''),
+(3, 'sk-438s3x', '1.99', 'coffee cups', ''),
+(4, 'sk-yx28s9', '2.99', 'paper plates', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction`
+--
+
+CREATE TABLE `transaction` (
+  `p_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `dt_start` datetime NOT NULL,
+  `dt_end` datetime NOT NULL,
+  `state` varchar(50) NOT NULL,
+  `subTotal` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction_bridge`
+--
+
+CREATE TABLE `transaction_bridge` (
+  `p_id` int(11) NOT NULL,
+  `t_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin_info`
+--
+ALTER TABLE `admin_info`
+  ADD KEY `id` (`ID`);
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `cart_product`
+--
+ALTER TABLE `cart_product`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `cart_id` (`cart_id`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `transaction`
+--
+ALTER TABLE `transaction`
+  ADD KEY `id` (`id`),
+  ADD KEY `p_id` (`p_id`),
+  ADD KEY `id_2` (`id`);
+
+--
+-- Indexes for table `transaction_bridge`
+--
+ALTER TABLE `transaction_bridge`
+  ADD KEY `p_id` (`p_id`),
+  ADD KEY `t_id` (`t_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin_info`
+--
+ALTER TABLE `admin_info`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `cart_product`
+--
+ALTER TABLE `cart_product`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `cart_product`
+--
+ALTER TABLE `cart_product`
+  ADD CONSTRAINT `cart_product_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `cart_product_ibfk_2` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`ID`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `transaction`
+--
+ALTER TABLE `transaction`
+  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`p_id`) REFERENCES `product` (`ID`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `transaction_bridge`
+--
+ALTER TABLE `transaction_bridge`
+  ADD CONSTRAINT `transaction_bridge_ibfk_1` FOREIGN KEY (`p_id`) REFERENCES `product` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `transaction_bridge_ibfk_2` FOREIGN KEY (`t_id`) REFERENCES `transaction` (`id`) ON UPDATE CASCADE;

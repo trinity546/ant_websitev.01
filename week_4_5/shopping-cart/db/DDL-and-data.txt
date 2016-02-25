@@ -1,0 +1,51 @@
+-- PATH=$PATH:/Applications/MAMP/Library/bin
+-- export PATH
+-- mysql -h localhost test < DDL-and-data.txt
+-- mysql -u root -p
+-- root root
+-- drop TABLE name_of_TABLE
+
+CREATE TABLE cart (
+  ID int NOT NULL AUTO_INCREMENT,
+  -- states are: started, completed, cancelled
+  state varchar(30) NOT NULL,
+  time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  total numeric(15,2) NOT NULL,
+  PRIMARY KEY (ID)
+  -- UPDATE/DELETE CASCADE = allow cascading operation, UPDATE/DELETE RESTRICT = disallow cascading operation
+);
+
+INSERT INTO cart (total, state) VALUES (0.00, 'cancelled');
+INSERT INTO cart (total, state) VALUES (0.00, 'cancelled');
+
+
+CREATE TABLE product (
+  ID int NOT NULL AUTO_INCREMENT,
+  -- stock keeping unit
+  SKU varchar(100) NOT NULL,
+  item_price  numeric(15, 2) NOT NULL,
+  description varchar(100) NOT NULL,
+  PRIMARY KEY (ID)
+);
+
+INSERT INTO product (SKU, item_price, description) VALUES ('sk-2843y', 14.99, 'toaster');
+INSERT INTO product (SKU, item_price, description) VALUES ('sk-327623z', 3.99, 'napkins');
+INSERT INTO product (SKU, item_price, description) VALUES ('sk-438s3x', 1.99, 'coffee cups');
+INSERT INTO product (SKU, item_price, description) VALUES ('sk-yx28s9', 2.99, 'paper plates');
+
+
+CREATE TABLE cart_product (
+  ID int NOT NULL AUTO_INCREMENT,
+  product_id int NOT NULL,
+  cart_id int NOT NULL,
+  quantity int NOT NULL,
+  time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (product_id) REFERENCES product(ID) ON UPDATE CASCADE ON DELETE RESTRICT,
+  FOREIGN KEY (cart_id) REFERENCES cart(ID) ON UPDATE CASCADE ON DELETE RESTRICT,
+  PRIMARY KEY (ID)
+);
+
+INSERT INTO cart_product (cart_id, product_id) VALUES (1, 1);
+INSERT INTO cart_product (cart_id, product_id) VALUES (1, 2);
+INSERT INTO cart_product (cart_id, product_id) VALUES (2, 1);
+INSERT INTO cart_product (cart_id, product_id) VALUES (2, 2);

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- View -->
+<head>
+
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <meta name="description" content=""></meta>
+    <meta name="author" content=""></meta>
+
+    <title>Sepia - Our Story</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+    
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800'></link>
+  <link rel="stylesheet" href="css/normalize.css"></link>
+        <link rel="stylesheet" href="css/style.css"></link>
+    <!-- Custom CSS -->
+    <link href="css/landing-page.css" rel="stylesheet"></link>
+    <link href="css/admin.css" rel="stylesheet"></link>
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'></link>
+    
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"></link>
+   
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+  <body>
+
+
+    <navReplace metal:use-macro="./templating/nav.xhtml/nav_bar">
+    </navReplace>
+
+<br/>
+    <br/>
+    <br/>
+
+      
+
+  
+       <br/>
+       <br/>
+ 
+<div class="container">
+<div class="shopping-cart">
+
+  <div class="column-labels">
+    <label class="product-image">Image</label>
+    <label class="product-details">Product</label>
+    <label class="product-price">Price</label>
+    <label class="product-quantity">Quantity</label>
+    <label class="product-removal">Remove</label>
+    <label class="product-line-price">Total</label>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="http://placehold.it/750x450"></img>
+    </div>
+    <div class="product-details">
+      <div class="product-title section-heading-main">Mirror One</div>
+      <p class="lead text-faded">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+    </div>
+    <div class="product-price">12.99</div>
+    <div class="product-quantity">
+      <input type="number" value="2" min="1"></input>
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove  <br/><span class="glyphicon glyphicon-remove"></span>
+      </button>
+    </div>
+    <div class="product-line-price">25.98</div>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="http://placehold.it/750x450"></img>
+    </div>
+    <div class="product-details">
+      <div class="product-title section-heading-main">Clock One</div>
+      <p class="lead text-faded">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde</p>
+    </div>
+    <div class="product-price">45.99</div>
+    <div class="product-quantity">
+      <input type="number" value="1" min="1"></input>
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove  <br/><span class="glyphicon glyphicon-remove"></span>
+      </button>
+    </div>
+    <div class="product-line-price">45.99</div>
+  </div>
+
+  <div class="totals">
+    <div class="totals-item">
+      <label>Subtotal</label>
+      <div class="totals-value" id="cart-subtotal">71.97</div>
+    </div>
+    <div class="totals-item">
+      <label>Tax (5%)</label>
+      <div class="totals-value" id="cart-tax">3.60</div>
+    </div>
+    <div class="totals-item">
+      <label>Shipping</label>
+      <div class="totals-value" id="cart-shipping">15.00</div>
+    </div>
+    <div class="totals-item totals-item-total">
+      <label>Grand Total</label>
+      <div class="totals-value" id="cart-total">90.57</div>
+    </div>
+  </div>
+      
+      <button class="checkout">Checkout</button>
+
+</div>
+    
+    </div>
+
+    
+   
+    <br/>
+    <br/>
+    
+     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+        <script src="./js/cart.js"></script>
+
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+ <script src="./js/cart.js"></script>
+  </body>
+</html>
