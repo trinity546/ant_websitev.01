@@ -204,10 +204,11 @@ $('a').click(function(){
                     var date = item['date'];
                     var price = item['price'];
                     var desc = item['desc'];
+                    var name = item['name'];
                     var subtotal = parseFloat(Math.round((qty * price) * 100) / 100).toFixed(2);
 
                     var item = "<li data-item-sku='" + sku + "' data-item-qty='" + qty + "' data-item-date='"
-                        + date + "'>" + desc + " " + qty + " x $" + price + " = " + subtotal
+                        + date + "'>" + desc + "" + name + " " + qty + " x $" + price + " = " + subtotal
                         + " <input type='button' data-remove-button='remove' value='Delete' class='btn btn-primary'/></li>";
                     shoppingCartList.append(item);
 
@@ -225,6 +226,7 @@ $('a').click(function(){
                 var qty = $("input[data-sku-qty='" + sku + "']").val();
                 var price = $("h4[data-sku-price='" + sku + "']").text();
                 var desc = $("p[data-sku-desc='" + sku + "']").text();
+                var name = $("h3[data-sku-name='" + sku + "']").text();
                 var subtotal = parseFloat(Math.round((qty * price) * 100) / 100).toFixed(2);
                 console.log(desc, "quantity", qty, "price", price);
 
@@ -233,8 +235,8 @@ $('a').click(function(){
 
                 // ALTERED FOR WEB STORAGE
                 var aDate = new Date();
-                var item = "<li data-item-sku='" + sku + "' data-item-qty='" + qty + "' data-item-date='"
-                    + aDate.getTime() + "'>" + desc + " " + qty + " x $" + price + " = " + subtotal
+                var item = "<li data-item-sku='" + sku + "' data-item-sku='" + sku + "' data-item-qty='" + qty + "' data-item-date='"
+                    + aDate.getTime() + "'>" + desc + " " + name + " " + qty + " x $" + price + " = " + subtotal
                     + " <input type='button' data-remove-button='remove' value='Delete' class='btn btn-primary'/></li>";
                 shoppingCartList.append(item);
 
@@ -245,7 +247,7 @@ $('a').click(function(){
                 if(cartData == null) {
                     return;
                 }
-                var item = {'sku': sku, 'qty': qty, date: aDate.getTime(), 'desc': desc, 'price': price};
+                var item = {'sku': sku, 'qty': qty, date: aDate.getTime(), 'desc': desc, 'name': name, 'price': price};
                 cartData['items'].push(item);
                 // clobber the old value
                 sessionStorage.setObject('autosave', cartData);
