@@ -64,7 +64,7 @@ class DBConnector {
         if($dbDetails == null) {
 
             $dbDetails = array(
-                'db_name' => 'ant_web',
+                'db_name' => 'ant_website',
                 'db_host' => 'localhost',
                 'db_user' => 'root',
                 'db_pass' => 'root'

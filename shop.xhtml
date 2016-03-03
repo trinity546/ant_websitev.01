@@ -58,22 +58,26 @@
         
         
         
+         <div class="container well form-horizontal">
+
+    
         
+
         
 <div id="content">
 
       <div id="shoppingCartContainer">
           
-           <input type="button" value="Start Cart" id="startCart"/>
-        <input type="button" value="Cancel Cart" id="cancelCart"/>
-
-        <h2>Cart Summary</h2>
-        <ul id="shoppingCart">
+           <input type="button" class="grey btn btn-primary" value="Start Cart" id="startCart"/>
+        <input type="button" class="grey btn btn-primary" value="Cancel Cart" id="cancelCart"/>
+          
+        <h2  class="section-heading-main">Shopping Cart</h2>
+        <div id="shoppingCart">
           <!--<li data-item-qty="1" data-item-sku="sk-438s3x">Coffee Cup (1) &#160;
             <input type="button" data-remove-button="remove" value="X"/></li>-->
-        </ul>
-        <input type="button" value="Check Out" id="checkoutcart"/>
-        <span style="display: inline; font-size: 8pt;"><i>You'll see taxes and other shipping costs (ha ha) during checkout.</i></span>
+        </div>
+        <input type="button" class="grey btn btn-primary" value="Check Out" id="checkoutcart"/>
+        <span style="display: inline; font-size: 8pt;"><i></i></span>
 
           <br/><br/>
       
@@ -83,6 +87,9 @@
 
         </div>
 </div>
+      
+            
+        </div>
         <br/>
         <br/>
 
@@ -207,9 +214,8 @@ $('a').click(function(){
                     var name = item['name'];
                     var subtotal = parseFloat(Math.round((qty * price) * 100) / 100).toFixed(2);
 
-                    var item = "<li data-item-sku='" + sku + "' data-item-qty='" + qty + "' data-item-date='"
-                        + date + "'>" + desc + "" + name + " " + qty + " x $" + price + " = " + subtotal
-                        + " <input type='button' data-remove-button='remove' value='Delete' class='btn btn-primary'/></li>";
+                    var item = "<span><li class='nodots' data-item-sku='" + sku + "' data-item-qty='" + qty + "' data-item-date='"
+                        + date + "'> " + "<h3 class='product-title section-headering-main2'> " + name + " </h3> " + "<h3 class='lead light product-title section-heading-main'> " + qty + " x $" + price + " = <strong class='total'>$" + subtotal + "</strong></h3> <input type='button' data-remove-button='remove' value='Delete Item' class='red btn btn-primary'/></li></span> <br/>";
                     shoppingCartList.append(item);
 
 
@@ -235,9 +241,7 @@ $('a').click(function(){
 
                 // ALTERED FOR WEB STORAGE
                 var aDate = new Date();
-                var item = "<li data-item-sku='" + sku + "' data-item-sku='" + sku + "' data-item-qty='" + qty + "' data-item-date='"
-                    + aDate.getTime() + "'>" + desc + " " + name + " " + qty + " x $" + price + " = " + subtotal
-                    + " <input type='button' data-remove-button='remove' value='Delete' class='btn btn-primary'/></li>";
+                var item = "<span><li class='nodots' data-item-sku='" + sku + "' data-item-sku='" + sku + "' data-item-qty='" + qty + "' data-item-date='" + aDate.getTime() + "'>  " + "<h3 class='product-title section-heading-main2'>" + name + "</h3> " + "<h3 class=' lead light product-title section-heading-main'>" + qty + " x $" + price + " = <strong class='total'>$" + subtotal + "</strong></h3> <input type='button' data-remove-button='remove' value='Delete Item' class='red btn btn-primary'/></li></span> <br/>";
                 shoppingCartList.append(item);
 
 
@@ -379,7 +383,6 @@ $('a').click(function(){
 </script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.js"></script>
-
 
 
 
