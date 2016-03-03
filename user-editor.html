@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-        
-    <link href="css/shop-homepage.css" rel="stylesheet"></link>
-    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+  <head>
+    <title>Adding, Editing, Deleting Records</title>
+    <meta charset="utf-8"/>
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Hind);
 
-    <!-- Custom CSS -->
-    <link href="css/landing-page.css" rel="stylesheet"></link>
-    <link href="css/admin.css" rel="stylesheet"></link>
+      body {
+        font-family: 'Hind', sans-serif;
+      }
 
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
-    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'></link>
-    </head>
-
-
+      table {
+        background-color: #c9f0e2;
+        border: solid 1px;
+      }
+      td {
+        border-bottom: solid 1px;
+        padding: 4px;
+      }
+    </style>
+  </head>
   <body>
- <navReplace metal:use-macro="./templating/nav.xhtml/nav_bar">
-    </navReplace>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
 
     <div id="content">
       <p><i>Only the first name is editable, but you can easily add the same JavaScript functionality to other fields.</i></p>
       <table id="users">
         <thead>
           <tr>
-            <th class="sku"><span>SKU</span></th>
-            <th class="name"><span>Name</span></th>
-            <th class="desc"><span>Desciption</span></th>
-              <th class="path"><span>Path</span></th>
-              <th class="price"><span>Price</span></th>
+            <th class="first_name_header"><span>First Name</span></th>
+            <th class="last_name_header"><span>Last Name</span></th>
+            <th class="login_header"><span>User Name</span></th>
             <th class="delete_header"><span>Delete</span></th>
             <th class="delete_header"><span>Update</span></th>
           </tr>
@@ -57,18 +53,16 @@
         <input id="submitNewUser" type="submit" value="Add"/>
       </form>
     </div>
-    <footerReplace metal:use-macro="/templating/footer.xhtml/page_footer">
-    </footerReplace>
 
-  </body>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
 
         $(document).ready(function() {
 
             function loadUsers() {
                 $.ajax({
-                    url: "/users.php",
+                    url: "./users.php",
                     type: "GET",
                     dataType: 'html',
                     success: function(returnedData) {
@@ -197,9 +191,6 @@
         });
 
     </script>
-    
-    <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+  </body>
 </html>
